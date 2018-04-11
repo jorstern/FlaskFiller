@@ -61,28 +61,6 @@ for cock in data_dict:
 
 	new_dict[cock] = recipe
 
-'''
-if len(amt) == 1: val = float(amt[0])
-elif len(amt) == 2: val = float(amt[0]) / float(amt[1])
-elif len(amt) == 3: val = float(amt[0]) + (float(amt[1]) / float(amt[2]))
-else: val == None
-
-
-if val != None:
-
-
-	
-
-else:
-	
-	recipe.append(ingredient)
-
-
-
-'''
-
-
-
 data = json.dumps(new_dict, indent=4, separators=(',', ': '))
 with open("clean_data.json", "w") as fw:
 	fw.write(data)
