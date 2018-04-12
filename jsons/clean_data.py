@@ -24,7 +24,6 @@ for cock in data_dict:
 		
 		amt = re.findall(r"[-+]?\d*\.\d+|\d+", ing)
 		amt = [float(s) for s in amt]
-		print(amt)
 
 		val = 0
 
