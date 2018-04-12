@@ -18,7 +18,7 @@ def go_through_list(drink_ings_list):
         if 'oz' in ing_amt.lower():
             ing_amt = re.sub("[^0-9./ ]", "", ing_amt).strip()
             if check_if_decimal(ing_amt):
-                frac = Fraction(float(ing_amt)).limit_denominator(5)
+                frac = Fraction(float(ing_amt)).limit_denominator(4)
                 num = frac.numerator
                 denom = frac.denominator
                 if num > denom and ((num % denom) != 0):
