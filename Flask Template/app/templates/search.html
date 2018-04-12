@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/main.css">
+
+    </head>
+    <body>
+        <div class="topcorner">
+            <p>Project Name: {{ name }}</p>
+            <p>Student Name: ({{ netid }})</p>
+        </div>
+        <form class="form-inline global-search">
+            <h1>
+                <a id="title" href="http://0.0.0.0:5000" style="font-size: 55px; font-family:'Futura'; color: #06CEA9;">FLASK FILLER</a>
+            </h1>
+            
+            <br><br>
+            
+            <div class="form-group">
+                <input id="input" type="text" name="search" class="form-control" placeholder="Enter a list of ingredients"
+                    style=" outline: none; border-color: #06CEA9; box-shadow: 0 0 10px #06CEA9;">
+            </div>
+            <button type="submit" class="btn btn-info" onclick="userInput" style="background-color: #06CEA9; box-shadow: 0 0 10px #06CEA9;"> Find Me Cocktails! </button>
+        </form>
+        <form class="form-inline global-search">
+        {% if data %}
+            <h1>{{output_message}}</h1>
+            {% for d in data %}  
+                <br>
+                <p>{{d}}</p>
+            {% endfor %}
+        {% endif %}
+        </form>
+
+        <h2 id="output"></h2>
+
+        <script>
+            /*function userInput() {
+                var user_input = document.getElementById("input").value
+                document.getElementById("output") = user_input
+            }*/
+
+        </script>
+    </body>
+
+</html>
