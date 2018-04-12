@@ -1,7 +1,7 @@
 import json
 import re
 
-with open('alcoholic_cocktails_webtender_ingredients.json', 'r') as fr:
+with open('clean_data.json', 'r') as fr:
 	data_dict = json.load(fr)
 
 new_dict = {}
@@ -53,6 +53,9 @@ for cock in data_dict:
 
 		elif " L " in ingredient[1]:
 			val *= 33.814
+			recipe.append([ingredient[0], str(val) + " oz"])
+		elif "ml" in ingredient[1]:
+			val *= 0.033814
 			recipe.append([ingredient[0], str(val) + " oz"])
 
 		else:
