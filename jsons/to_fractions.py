@@ -15,6 +15,8 @@ def go_through_list(drink_ings_list):
     for ingredient in drink_ings_list:
         ing_name = ingredient[0]
         ing_amt = ingredient[1]
+        if 'tblsp' in ing_amt.lower():
+            print(ing_name)
         if 'oz' in ing_amt.lower():
             ing_amt = re.sub("[^0-9./ ]", "", ing_amt).strip()
             if check_if_decimal(ing_amt):

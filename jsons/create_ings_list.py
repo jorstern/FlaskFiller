@@ -14,7 +14,7 @@ for drink in data_dict:
         ings.add(ingredient[0])
 
 ings = sorted(ings)
-data = json.dumps(ings, separators=('\n', ": "))
+data = json.dumps(ings, separators=(',\n', ": "))
 
 with open('ingredients.json', 'w') as fr:
     fr.write(data)
