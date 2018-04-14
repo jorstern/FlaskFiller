@@ -1,11 +1,12 @@
 import json
 
 name_swaps = {}
-with open('name_swaps.txt', 'r') as f:
+with open('name_swaps.json', 'r', encoding='utf-8') as f:
     for line in f:
         k, v = line.strip().split(':')
-        name_swaps[k.strip().strip("\"")] = v.strip().strip("\",")
-        
+        name_swaps[k.strip()] = v.strip().strip("")
+        print(k.strip().strip("\"") + " " + name_swaps[k.strip().strip("\"")])
+
 def replace_names(): 
     with open('clean_data_fractions.json', 'r') as fr:
         data_dict = json.load(fr)
