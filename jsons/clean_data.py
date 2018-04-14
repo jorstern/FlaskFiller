@@ -51,15 +51,34 @@ for cock in data_dict:
             val *= 1.5
             recipe.append([ingredient[0], str(val) + " oz"])
 
-        elif " L " in ingredient[1]:
+        elif " L" in ingredient[1]:
             val *= 33.814
             recipe.append([ingredient[0], str(val) + " oz"])
         elif "ml" in ingredient[1]:
             val *= 0.033814
             recipe.append([ingredient[0], str(val) + " oz"])
+        elif "tsp" in ingredient[1]:
+            val /= 8
+            recipe.append([ingredient[0], str(val) + " oz"])
         elif "tblsp" in ingredient[1]:
                         val *= 0.5
                         recipe.append([ingredient[0], str(val) + " oz"])
+        elif "pint" in ingredient[1]:
+            val *= 16
+            recipe.append([ingredient[0], str(val) + " oz"])
+        elif "cup" in ingredient[1]:
+            val *= 8
+            recipe.append([ingredient[0], str(val) + " oz"])
+        elif "glass" in ingredient[1]:
+            val *= 8
+            recipe.append([ingredient[0], str(val) + " oz"])
+        elif "can" in ingredient[1]:
+            val *= 12
+            recipe.append([ingredient[0], str(val) + " oz"])
+        elif "jigger" in ingredient[1]:
+            val *= 1.5
+            recipe.append([ingredient[0], str(val) + " oz"])
+        
         else:
             recipe.append(ingredient)
 
