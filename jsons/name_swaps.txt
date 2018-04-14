@@ -4,4 +4,7 @@
 "Absolut Kurant": "Blackcurrant vodka",
 "Absolut Mandrin": "Orange vodka",
 "Absolut Vodka": "Vodka",
+"Applejack": "Apple brandy",
+"Bacardi Limon": "Citrus rum",
 "Cointreau": "Triple sec",
+"Barenjager": "Honey liqueur",
