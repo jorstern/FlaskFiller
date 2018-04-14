@@ -11,7 +11,7 @@
 body {
 	padding-top: 15%;
 	padding-bottom: 15px;
-	background-color: black;
+	background-color: #212121;
 }
 
 .global-search {
@@ -33,25 +33,10 @@ position:absolute;
 top:2%;
 right:2%;
 }
-.btn{
-background-color: #07A286;
-color: white;
-border: none
-}
-.btn:hover{
-background-color: black;
-}
 
-.step-links a{
-
-font-size: 55px;
-font-family:'Futura';
-color: #06CEA9;
-}
-
-#title .step-links a {
-	font-size: 55px;
-	font-family:'Futura';
-	color: #06CEA9;
-
+/*
+text-shadow: -3px 3px #EF476F;
+*/
+.flask {
+	color: red;
 }
