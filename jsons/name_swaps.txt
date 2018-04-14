@@ -1,0 +1,7 @@
+"Tropicana": "Orange juice",
+"Anis": "Anisette",
+"Absolut Citron": "Lemon vodka",
+"Absolut Kurant": "Blackcurrant vodka",
+"Absolut Mandrin": "Orange vodka",
+"Absolut Vodka": "Vodka",
+"Cointreau": "Triple sec",

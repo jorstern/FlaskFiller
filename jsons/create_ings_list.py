@@ -2,7 +2,7 @@ import json
 import re
 from fractions import Fraction
         
-with open('clean_data_fractions.json', 'r') as fr:
+with open('clean_data_revised_names.json', 'r') as fr:
     data_dict = json.load(fr)
     
 counter = 0
