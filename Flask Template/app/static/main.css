@@ -34,9 +34,9 @@ top:2%;
 right:2%;
 }
 
-/*
-text-shadow: -3px 3px #EF476F;
-*/
-.flask {
-	color: red;
+.back_page {
+	background-color: #333333;
+	padding: 20px;
+	width: 800px;
+	border-radius: 25px;
 }

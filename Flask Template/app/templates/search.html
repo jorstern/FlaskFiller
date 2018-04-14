@@ -15,16 +15,19 @@
             <p>Student Name: ({{ netid }})</p>
         </div>
         <form class="form-inline global-search">
-            <h1 id="flask">FLASK FILLER</h1>
 
-            </h1>
-            
-            <br><br>
-            
-            <div class="form-group">
-                <input id="input" type="text" name="search" class="form-control" placeholder="Enter a list of ingredients">
+            <div class="back_page" style="background-color: black; padding: 20px; width: 800px; border-radius: 25px; border: 5px solid #FFC43D;"> 
+                <h1 class="flask" style="font-family: Futura; font-size: 55px; color: #41CAA8">FLASK FILLER</h1>
+                <br></br>
+
+                <div class="form-group">
+                    <input id="input" type="text" name="ingredients" style="" class="form-control" placeholder="Enter a list of ingredients">
+                </div>
+                <button type="submit" class="btn" onclick="userInput" style="background-color: #41CAA8; color: white"> Find Me Cocktails! </button>
             </div>
-            <button type="submit" class="btn" onclick="userInput" style="background-color: #41CAA8"> Find Me Cocktails! </button>
+
+
+
         </form>
         <form class="form-inline global-search">
         {% if data %}
