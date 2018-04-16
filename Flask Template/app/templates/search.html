@@ -25,6 +25,16 @@
     color: #41CAA8;
 }
 
+.choices ul {
+    color: white;
+    font-size: 20px;
+}
+
+.ing_item li {
+    color: white;
+    font-size: 20px;
+}
+
 .autocomplete-items div {
     display: block;
   cursor: pointer;
@@ -74,6 +84,12 @@
                     
                     </div>
                     <button type="submit" class="btn" onclick="userInput" style="background-color: #41CAA8; color: white"> Find Me Cocktails! </button>
+
+                    <div class="container-multi" style="display: block">
+                        <ul id="choices" class="choices" style="list-style: none;">
+                            
+                        </ul>
+                    </div>
                 </div>
 
             </div>
@@ -598,6 +614,7 @@ function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
+  var list = document.getElementById("choices")
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
@@ -609,6 +626,8 @@ function autocomplete(inp, arr) {
       a = document.createElement("DIV");
       a.setAttribute("id", this.id + "autocomplete-list");
       a.setAttribute("class", "autocomplete-items");
+
+      
       /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
@@ -626,11 +645,16 @@ function autocomplete(inp, arr) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+              item = document.createElement("li")
+              item.innerHTML = this.getElementsByTagName("input")[0].value;
+              item.style.color = white;
+              item.setAttribute("class", "ing_item");
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
           });
           a.appendChild(b);
+          list.appendChild(item)
         }
       }
   });
