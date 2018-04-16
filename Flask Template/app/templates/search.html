@@ -1,11 +1,9 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
-
+        <link rel="stylesheet" href="/static/bootstrap.min.css">
         <link rel="stylesheet" href="/static/main.css">
 
-
-        <style>
+    <style>
 
 .autocomplete-items {
   position: absolute;
@@ -56,60 +54,60 @@
 
 
         </style>
+
+
+
+
     </head>
     <body>
-
-         <script src="js/jquery-1.11.3.min.js"></script>
-         <script src="bootstrap/js/bootstrap.min.js"></script>
-         <script src="/static/script.js"></script>
-
         <div class="topcorner">
             <p>Project Name: {{ name }}</p>
             <p>Student Name: ({{ netid }})</p>
         </div>
         <form class="form-inline global-search" autocomplete="off">
+            <h1 style="font-family: Futura; font-size: 55px; color: #41CAA8">FLASK FILLER</h1>
+            
+            <br><br>
 
-            <div class="back_page" style="background-color: black; width: 700px; border-radius: 25px;"> 
+            <p style="color: white; font-size: 15px; padding: 4px; font-family: Futura; display: block;">Enter a list of ingredients or attributes separated by commas to get drink recommendations</p>
+            
+            <div class="form-group">
 
-
-                <h1 class="flask" style="font-family: Futura; font-size: 55px; color: #41CAA8">FLASK FILLER</h1>
-                <br></br>
-
-                <div class="form-group">
-                    
-
-                    <div class="autocomplete" style="position: relative; display: inline-block; width: 500px">
-                    
-                    <input id="ing_input" type="text" name="ingredients" style="" class="form-control" placeholder="Enter a list of ingredients" style="border: 5px solid #41CAA8;">
-                    
+                <div class="autocomplete" style="position: relative; display: inline-block; width: 500px">
+                    <div style="border-color: #EF476F; box-shadow: 0 5px 10px #EF476F; border-radius: 25px">
+                        <input id="input" type="text" name="search" class="form-control" placeholder="Enter ingredients" autocomplete="off">
                     </div>
-                    <button type="submit" class="btn" onclick="userInput" style="background-color: #41CAA8; color: white"> Find Me Cocktails! </button>
+                </div>
 
-                    <div class="container-multi" style="display: block">
-                        <ul id="choices" class="choices" style="list-style: none;">
-                            
-                        </ul>
-                    </div>
+                <button type="submit" class="btn btn-info" style="color: white; background-color: #41CAA8; border: none"> <strong>Search</strong> </button>
+
+                <div class="container-multi" style="display: block">
+                    <ul id="choices" class="choices" style="list-style: none;">        
+                    </ul>
                 </div>
 
             </div>
 
+
+
+            
+
+            
+
         </form>
+
         <form class="form-inline global-search">
         {% if data %}
-            <h1>{{output_message}}</h1>
+            <h1 style="color: white; font-size: 40px; font-family: Futura;">{{output_message}}</h1>
             {% for d in data %}  
                 <br>
-                <p>{{d}}</p>
+                <p style="color: white">{{d}}</p>
             {% endfor %}
         {% endif %}
         </form>
 
-        <h2 id="output"></h2>
-
         <script>
-            var ingredients = ["151 proof rum",
-"190 Proof Everclear",
+            var ingredients = ["151 proof rum","190 Proof Everclear",
 "7-Up",
 "Absinthe",
 "Absolut Peppar",
@@ -645,16 +643,16 @@ function autocomplete(inp, arr) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              item = document.createElement("li")
+              /*item = document.createElement("li")
               item.innerHTML = this.getElementsByTagName("input")[0].value;
               item.style.color = white;
-              item.setAttribute("class", "ing_item");
+              item.setAttribute("class", "ing_item");*/
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
           });
           a.appendChild(b);
-          list.appendChild(item)
+          /*list.appendChild(item)*/
         }
       }
   });
@@ -715,9 +713,14 @@ document.addEventListener("click", function (e) {
 });
 }
 
-autocomplete(document.getElementById("ing_input"), ingredients);
+autocomplete(document.getElementById("input"), ingredients);
 
         </script>
+
+
+
+
     </body>
+
 
 </html>
