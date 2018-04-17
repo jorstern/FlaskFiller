@@ -36,20 +36,20 @@
 .autocomplete-items div {
     display: block;
   cursor: pointer;
-  color: white;
-  background-color: #000;
+  color: #212121;
+  background-color: #F0EAD6; 
   /*border-bottom: 1px solid #d4d4d4; */
   text-align: left;
   padding-left: 10px;
 }
 .autocomplete-items div:hover {
   /*when hovering an item:*/
-  background-color: #EF476F;
+  background-color: #ba1246; 
 }
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important;
-  color: #ffffff;
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
 }
 
 body {
@@ -70,32 +70,50 @@ body {
         </div>
         <form class="form-inline global-search" autocomplete="off">
             <h1 style="font-family: Futura; font-size: 55px; color: #ba1246">FLASK FILLER</h1>
-
+            
             <br><br>
 
-            <p style="color: #212121; font-size: 15px; padding: 4px; font-family: Futura; display: block;">Enter a list of ingredients or attributes separated by commas to get drink recommendations</p>
-
+            <p style="color: #F0EAD6; font-size: 15px; padding: 4px; font-family: Futura; display: block;">Enter a list of ingredients or attributes separated by commas to get drink recommendations</p>
+            
             <div class="form-group">
 
-
-                <div style="display: block; padding-bottom: 10px;">
-                    <input id="input" type="text" name="search" class="form-control" placeholder="Enter ingredients" autocomplete="off">
-
-
-                <button type="submit" class="btn btn-info" style="color: #F0EAD6; background-color: #ba1246; border: none"> <strong>Search</strong> </button>
+                <div class="autocomplete" style="position: relative; display: inline-block; width: 500px; padding-bottom: 10px">
+                    <div style="">
+                        <input id="input" type="text" name="search" class="form-control" placeholder="Enter ingredients" autocomplete="off">
+                    </div>
                 </div>
 
-                <div style="display: block; padding-bottom: 10px">
-                    <input id="input" type="text" name="search" class="form-control" placeholder="Enter flavors" autocomplete="off">
-
-
                 <button type="submit" class="btn btn-info" style="color: #F0EAD6; background-color: #ba1246; border: none"> <strong>Search</strong> </button>
-                </div>
 
                 <div class="container-multi" style="display: block">
-                    <ul id="choices" class="choices" style="list-style: none;">
+                    <ul id="choices" class="choices" style="list-style: none;">        
                     </ul>
                 </div>
+
+
+                <div class="autocomplete" style="position: relative; display: inline-block; width: 500px; padding-bottom: 10px;">
+                    <div style="">
+                        <input id="input" type="text" name="search" class="form-control" placeholder="Enter flavors" autocomplete="off">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info" style="color: #F0EAD6; background-color: #ba1246; border: none"> <strong>Search</strong> </button>
+
+                <br>
+
+                <div class="autocomplete" style="position: relative; display: inline-block; width: 500px; padding-bottom: 10px;">
+                    <div style="">
+                        <input id="input" type="text" name="search" class="form-control" placeholder="Enter calories" autocomplete="off">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info" style="color: #F0EAD6; background-color: #ba1246; border: none"> <strong>Search</strong> </button>
+
+                <div class="slidecontainer" style="display: block">
+                  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                  <p style="font-size: 20px; color: #ba1246; font-family: Futura;">Alcohol Content</p>
+                </div>
+
 
             </div>
 
@@ -105,7 +123,7 @@ body {
         {% if data %}
             <h1 style="color: #ba1246; font-size: 22px; font-family: Futura; padding: 3px;">{{output_message}}</h1>
             <p stle="color: white">{{ings}}</p>
-            {% for d in data %}
+            {% for d in data %}  
                 <br>
                 <p style="color: #212121">{{d}}</p>
             {% endfor %}
@@ -113,8 +131,7 @@ body {
         </form>
 
         <script>
-        var ingredients = ["151 proof rum",
-"190 Proof Everclear",
+        var ingredients = ["151 proof rum","190 Proof Everclear",
 "7-Up",
 "Absinthe",
 "Absolut Peppar",
@@ -212,6 +229,7 @@ body {
 "Cherry liqueur",
 "Cherry syrup",
 "Cherry vodka",
+"Chili sauce",
 "Chocolate",
 "Chocolate ice-cream",
 "Chocolate liqueur",
@@ -225,6 +243,7 @@ body {
 "Citrus rum",
 "Citrus vodka",
 "Clamato juice",
+"Clove",
 "Cloves",
 "Club soda",
 "Coca-Cola",
@@ -286,6 +305,7 @@ body {
 "Fanta",
 "Fennel seeds",
 "Fernet Branca",
+"Figs",
 "Firewater",
 "Food coloring",
 "Forbidden Fruit",
@@ -375,10 +395,10 @@ body {
 "Lemon soda",
 "Lemon vodka",
 "Lemon-lime mix",
-"Lemon-lime sherbet",
 "Lemon-lime soda",
 "Lemonade",
 "Licor 43",
+"Licorice root",
 "Light cream",
 "Light rum",
 "Lillet",
@@ -555,7 +575,6 @@ body {
 "Sunny delight",
 "Surge",
 "Swedish Punsch",
-"Sweet Tea",
 "Sweet Vermouth",
 "Sweet and sour",
 "Swiss Mocha Cream liqueur",
@@ -589,6 +608,7 @@ body {
 "Watermelon",
 "Watermelon liqueur",
 "Watermelon schnapps",
+"West Coast Cooler",
 "Whipped cream",
 "Whipping cream",
 "Whiskey",
@@ -629,7 +649,7 @@ function autocomplete(inp, arr) {
       a.setAttribute("id", this.id + "autocomplete-list");
       a.setAttribute("class", "autocomplete-items");
 
-
+      
       /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
