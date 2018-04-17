@@ -454,19 +454,24 @@ ingredients = [item.lower() for item in ingredients]
 @irsystem.route('/', methods=['GET'])
 def search():
 	query = request.args.get('search')
+	query = query.lower()
 	if not query:
 		data = []
 		output_message = ''
 	else:
-		output_message = query
+		output_message = "ingredients: "
 		ings = query.split(',')
 		ings = [item.lstrip(' ') for item in ings]
-		data = []
+
+		data = range(5) # change data to output list of drinks
+		
+		search_ing = []
 		for ing in ings:
 			if ing in ingredients:
 				print(ing + "is legit")
-				data.append(ing)
+				search_ing.append(ing)
 
-
+		for ing in search_ing:
+			output_message += ing + ',  ' 
 
 	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
