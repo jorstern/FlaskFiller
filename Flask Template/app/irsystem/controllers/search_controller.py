@@ -456,7 +456,8 @@ ingredients = [item.lower() for item in ingredients]
 @irsystem.route('/', methods=['GET'])
 def search():
 	query = request.args.get('search')
-	print(type(query))
+	#print(type(query))
+	#query = query.decode('utf-8').lower()
 	if not query:
 		print("Blank space baby")
 		data = []
