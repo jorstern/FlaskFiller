@@ -52,6 +52,10 @@
   color: #ffffff; 
 }
 
+body {
+  background-color: #F0EAD6;
+}
+
 
         </style>
 
@@ -65,21 +69,21 @@
             <p>Student Name: ({{ netid }})</p>
         </div>
         <form class="form-inline global-search" autocomplete="off">
-            <h1 style="font-family: Futura; font-size: 55px; color: #41CAA8">FLASK FILLER</h1>
+            <h1 style="font-family: Futura; font-size: 55px; color: #ba1246">FLASK FILLER</h1>
             
             <br><br>
 
-            <p style="color: white; font-size: 15px; padding: 4px; font-family: Futura; display: block;">Enter a list of ingredients or attributes separated by commas to get drink recommendations</p>
+            <p style="color: #212121; font-size: 15px; padding: 4px; font-family: Futura; display: block;">Enter a list of ingredients or attributes separated by commas to get drink recommendations</p>
             
             <div class="form-group">
 
                 <div class="autocomplete" style="position: relative; display: inline-block; width: 500px">
-                    <div style="border-color: #EF476F; box-shadow: 0 5px 10px #EF476F; border-radius: 25px">
+                    <div style="">
                         <input id="input" type="text" name="search" class="form-control" placeholder="Enter ingredients" autocomplete="off">
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-info" style="color: white; background-color: #41CAA8; border: none"> <strong>Search</strong> </button>
+                <button type="submit" class="btn btn-info" style="color: #212121; background-color: #ba1246; border: none"> <strong>Search</strong> </button>
 
                 <div class="container-multi" style="display: block">
                     <ul id="choices" class="choices" style="list-style: none;">        
@@ -92,10 +96,11 @@
 
         <form class="form-inline global-search">
         {% if data %}
-            <h1 style="color: white; font-size: 40px; font-family: Futura;">{{output_message}}</h1>
+            <h1 style="color: #ba1246; font-size: 22px; font-family: Futura; padding: 3px;">{{output_message}}</h1>
+            <p stle="color: white">{{ings}}</p>
             {% for d in data %}  
                 <br>
-                <p style="color: white">{{d}}</p>
+                <p style="color: #212121">{{d}}</p>
             {% endfor %}
         {% endif %}
         </form>
@@ -710,9 +715,6 @@ document.addEventListener("click", function (e) {
 autocomplete(document.getElementById("input"), ingredients);
 
         </script>
-
-
-
 
     </body>
 
