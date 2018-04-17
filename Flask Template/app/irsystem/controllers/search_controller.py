@@ -1,6 +1,8 @@
 from . import *
 from app.irsystem.models.helpers import *
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
+import helper
+import pickle
 
 project_name = "Flask Filler"
 net_id = ""
@@ -454,24 +456,32 @@ ingredients = [item.lower() for item in ingredients]
 @irsystem.route('/', methods=['GET'])
 def search():
 	query = request.args.get('search')
-	query = query.lower()
+	print(type(query))
 	if not query:
+		print("Blank space baby")
 		data = []
 		output_message = ''
 	else:
+		query = query.lower()
+		print(query + "wasup")
 		output_message = "ingredients: "
 		ings = query.split(',')
 		ings = [item.lstrip(' ') for item in ings]
 
-		data = range(5) # change data to output list of drinks
-		
+		data = [] # change data to output list of drinks
+
 		search_ing = []
 		for ing in ings:
 			if ing in ingredients:
-				print(ing + "is legit")
+				print(ing)
 				search_ing.append(ing)
-
 		for ing in search_ing:
-			output_message += ing + ',  ' 
-
+			output_message += ing + ',  '
+		print(search_ing)
+		user_list = [x.lower().encode('ascii', 'ignore') for x in search_ing]
+		print(user_list)
+		ranked_list = helper.drink_jaccard_sim(user_list)
+		print(ranked_list)
+		data.append(helper.get_top_k_drinks(ranked_list, 30))
+		print(data)
 	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
