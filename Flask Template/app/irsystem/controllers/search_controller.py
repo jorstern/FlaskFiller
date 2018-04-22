@@ -6,7 +6,7 @@ import json_extraction
 
 
 project_name = "Flask Filler"
-net_id = ""
+net_id = "aam252, js2595, dmb469"
 
 
 ingredients = ["151 proof rum",
@@ -537,6 +537,7 @@ def search():
 				search_ing.append(ing)
 		for ing in search_ing:
 			output_message += ing + ',  '
+
 		print(search_ing)
 		user_list = [x.lower().encode('utf-8') for x in search_ing]
 		print("user list:")

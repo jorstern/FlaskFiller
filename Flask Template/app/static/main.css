@@ -1,3 +1,4 @@
+
 @media (min-width: 1200px) {
 	.container {
 	    max-width: 970px;
@@ -44,4 +45,45 @@ right:2%;
 
 
 
+.autocomplete-items {
+  position: absolute;
+  /*border: 1px solid #d4d4d4;*/
+  border-bottom: none;
+  border-top: none;
+  z-index: 100;
+  display: block;
+  color: white;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
 
+.choices ul {
+    color: white;
+    font-size: 20px;
+}
+
+.ing_item li {
+    color: white;
+    font-size: 20px;
+}
+
+.autocomplete-items div {
+    display: block;
+  cursor: pointer;
+  color: #212121;
+  background-color: #F0EAD6; 
+  /*border-bottom: 1px solid #d4d4d4; */
+  text-align: left;
+  padding-left: 10px;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #d84b77; 
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}

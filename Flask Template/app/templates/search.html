@@ -1,70 +1,60 @@
 <html>
     <head>
-        <link rel="stylesheet" href="/static/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/main.css">
+        <link href="/static/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/main.css" rel="stylesheet" type="text/css" >
 
-    <style>
+        <style>
+          /* STYLING TO OVVERRIDE THE AUTOCOMPLETE FORM*/
+            .autocomplete-items {
+              position: absolute;
+              /*border: 1px solid #d4d4d4;*/
+              border-bottom: none;
+              border-top: none;
+              z-index: 100;
+              display: block;
+              color: white;
+              /*position the autocomplete items to be the same width as the container:*/
+              top: 100%;
+              left: 0;
+              right: 0;
+            }
 
-.autocomplete-items {
-  position: absolute;
-  /*border: 1px solid #d4d4d4;*/
-  border-bottom: none;
-  border-top: none;
-  z-index: 100;
-  display: block;
-  color: white;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-}
+            .choices ul {
+                color: white;
+                font-size: 20px;
+            }
 
-.autocomplete-items::first-letter {
-    color: #41CAA8;
-}
+            .ing_item li {
+                color: white;
+                font-size: 20px;
+            }
 
-.choices ul {
-    color: white;
-    font-size: 20px;
-}
-
-.ing_item li {
-    color: white;
-    font-size: 20px;
-}
-
-.autocomplete-items div {
-    display: block;
-  cursor: pointer;
-  color: #212121;
-  background-color: #F0EAD6; 
-  /*border-bottom: 1px solid #d4d4d4; */
-  text-align: left;
-  padding-left: 10px;
-}
-.autocomplete-items div:hover {
-  /*when hovering an item:*/
-  background-color: #ba1246; 
-}
-.autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important; 
-  color: #ffffff; 
-}
-
-body {
-  background-color: #F0EAD6;
-}
-
+            .autocomplete-items div {
+                display: block;
+              cursor: pointer;
+              color: #212121;
+              background-color: #F0EAD6; 
+              /*border-bottom: 1px solid #d4d4d4; */
+              text-align: left;
+              padding-left: 10px;
+            }
+            .autocomplete-items div:hover {
+              /*when hovering an item:*/
+              background-color: #e5648d; 
+            }
+            .autocomplete-active {
+              /*when navigating through the items using the arrow keys:*/
+              background-color: DodgerBlue !important; 
+              color: #ffffff; 
+            }
 
         </style>
 
-
-
-
     </head>
     <body>
-        <div class="topcorner">
+
+
+        <div class="topcorner" style="text-align: right">
             <p>Project Name: {{ name }}</p>
             <p>Student Name: ({{ netid }})</p>
         </div>
@@ -73,7 +63,7 @@ body {
             
             <br><br>
 
-            <p style="color: #F0EAD6; font-size: 15px; padding: 4px; font-family: Futura; display: block;">Enter a list of ingredients or attributes separated by commas to get drink recommendations</p>
+            <p style="color: #ba1246; font-size: 15px; padding: 4px; font-family: Futura; display: block;">Enter a list of ingredients or attributes separated by commas to get drink recommendations</p>
             
             <div class="form-group">
 
@@ -90,30 +80,12 @@ body {
                     </ul>
                 </div>
 
-
-                <div class="autocomplete" style="position: relative; display: inline-block; width: 500px; padding-bottom: 10px;">
-                    <div style="">
-                        <input id="input" type="text" name="search" class="form-control" placeholder="Enter flavors" autocomplete="off">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-info" style="color: #F0EAD6; background-color: #ba1246; border: none"> <strong>Search</strong> </button>
-
-                <br>
-
-                <div class="autocomplete" style="position: relative; display: inline-block; width: 500px; padding-bottom: 10px;">
-                    <div style="">
-                        <input id="input" type="text" name="search" class="form-control" placeholder="Enter calories" autocomplete="off">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-info" style="color: #F0EAD6; background-color: #ba1246; border: none"> <strong>Search</strong> </button>
+                <br><br>
 
                 <div class="slidecontainer" style="display: block">
                   <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                   <p style="font-size: 20px; color: #ba1246; font-family: Futura;">Alcohol Content</p>
                 </div>
-
 
             </div>
 
@@ -649,12 +621,17 @@ function autocomplete(inp, arr) {
       a.setAttribute("id", this.id + "autocomplete-list");
       a.setAttribute("class", "autocomplete-items");
 
-      
+      array = val.split(",");
+      if (array.length == 1) { val = array[0];}
+      else {
+        val = array[array.length -1];
+      }
       /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
       for (i = 0; i < arr.length; i++) {
         /*check if the item starts with the same letters as the text field value:*/
+
         if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
@@ -666,7 +643,17 @@ function autocomplete(inp, arr) {
           /*execute a function when someone clicks on the item value (DIV element):*/
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
-              inp.value = this.getElementsByTagName("input")[0].value;
+              total_val = ""
+              if (array.length > 1) {
+                for (i = 0; i < array.length-1; i++) {
+                  total_val += array[i] + ","
+                }
+                total_val += this.getElementsByTagName("input")[0].value;
+                inp.value = total_val;
+              } else {
+                inp.value = this.getElementsByTagName("input")[0].value;
+              }
+              
               /*item = document.createElement("li")
               item.innerHTML = this.getElementsByTagName("input")[0].value;
               item.style.color = white;
@@ -735,9 +722,18 @@ function autocomplete(inp, arr) {
 document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
+
+
 }
 
 autocomplete(document.getElementById("input"), ingredients);
+
+inp.addEventListener("keydown", function(e) {
+  var keyCode = e.keyCode;
+  if(keyCode ==188) {
+    autocomplete(document.getElementById("input"), ingredients);
+  }
+})
 
         </script>
 

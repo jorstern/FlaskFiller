@@ -31,6 +31,8 @@ for k,v in drink_list.items():
 	drink_list_new[drink_name] = recipe
 drink_list = drink_list_new
 
+print(drink_list)
+
 #create helper methods and arrays
 ingr_to_num = {}
 i=0
